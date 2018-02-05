@@ -29,7 +29,8 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.esafirm.android-image-picker:imagepicker:1.8.0'
     compile 'com.github.esafirm.android-image-picker:rximagepicker:1.8.0'
-
+    compile "com.microsoft.appcenter:appcenter-analytics:1.2.0"
+    compile "com.microsoft.appcenter:appcenter-crashes:1.2.0"
 }
 
 apply plugin: 'com.google.gms.google-services'

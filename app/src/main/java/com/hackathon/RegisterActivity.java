@@ -51,6 +51,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -77,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf-9257b6d056ce", Analytics.class, Crashes.class);
         sharedPref = getApplicationContext().getSharedPreferences("Hackathon",Context.MODE_PRIVATE);
 
         if (!sharedPref.getString(AppConstants.UserID, "").equals("")) {
