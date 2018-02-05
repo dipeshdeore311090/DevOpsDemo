@@ -26,7 +26,9 @@
         android:hint="Name"
         android:inputType="text"
         android:textColor="@android:color/black"
-        android:textColorHint="@color/ef_grey" />
+        android:textColorHint="@color/ef_grey"
+        android:imeOptions="actionNext"
+        />
 
     <EditText
         android:id="@+id/txt_base64"
@@ -37,7 +39,7 @@
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:hint="Mobile Number"
-        android:imeOptions="actionDone"
+        android:imeOptions="actionNext"
         android:inputType="number"
         android:maxLength="10"
         android:textColor="@android:color/black"
