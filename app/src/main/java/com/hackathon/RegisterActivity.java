@@ -83,6 +83,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initialize App center Analytics and Push
+        Push.setSenderId("1012619576677");
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf-9257b6d056ce", Analytics.class, Crashes.class);
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf- 9257b6d056ce", Push.class);
 
