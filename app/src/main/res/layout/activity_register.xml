@@ -4,60 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/lightBrown"
     tools:context="com.hackathon.RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DevOps Demo App"
+        android:textSize="22dp"
+        android:id="@+id/txt_devopsdemo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@color/colorBrown"
+        android:textStyle="bold"/>
 
     <ImageView
         android:id="@+id/img_profile_pic"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_below="@+id/txt_devopsdemo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/user" />
 
-    <EditText
+    <com.gcherubini.animatedexpandableedittext.AnimatedExpandableEditText
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_profile_pic"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:hint="Name"
         android:inputType="text"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBrown"
         android:textColorHint="@color/ef_grey"
         android:imeOptions="actionNext"
         />
 
-    <EditText
+    <com.gcherubini.animatedexpandableedittext.AnimatedExpandableEditText
         android:id="@+id/txt_base64"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:hint="Mobile Number"
         android:imeOptions="actionNext"
         android:inputType="number"
         android:maxLength="10"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBrown"
         android:textColorHint="@color/ef_grey" />
 
-    <EditText
+    <com.gcherubini.animatedexpandableedittext.AnimatedExpandableEditText
         android:id="@+id/txt_interest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_base64"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:hint="What are you Guru at?"
         android:imeOptions="actionDone"
         android:inputType="text"
         android:maxLength="30"
-        android:textColor="@android:color/black"
+        android:textColor="@color/colorBrown"
         android:textColorHint="@color/ef_grey" />
 
     <Button
@@ -69,6 +82,8 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Register"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/ef_white"
+        android:background="@color/colorBrown"
+        android:textSize="20dp"/>
 
 </RelativeLayout>

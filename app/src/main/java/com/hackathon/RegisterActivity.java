@@ -1,6 +1,7 @@
 package com.hackathon;
 
 import android.*;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -42,6 +43,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,6 +57,8 @@ import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.push.Push;
+import com.microsoft.appcenter.push.PushListener;
+import com.microsoft.appcenter.push.PushNotification;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -83,8 +87,12 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Initialize App center Analytics and Push
+        Push.setSenderId("1012619576677");
+        Push.setListener(new MyPushListener());
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf-9257b6d056ce", Analytics.class, Crashes.class);
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf- 9257b6d056ce", Push.class);
+        Push.setEnabled(true);
+        Analytics.trackEvent("DevOps Demo app launched from " + Build.MODEL);
 
         sharedPref = getApplicationContext().getSharedPreferences("Hackathon",Context.MODE_PRIVATE);
 
@@ -93,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
+
         } else {
 
             imgProfilePic = findViewById(R.id.img_profile_pic);
@@ -122,6 +131,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             String token = FirebaseInstanceId.getInstance().getToken();
             Log.d(TAG, "Register Token: " + token);
+            Analytics.trackEvent("Device token:  " + token);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(AppConstants.DeviceToken, token);
             editor.commit();
@@ -129,7 +139,6 @@ public class RegisterActivity extends AppCompatActivity {
             userModel.setDeviceToken(token);
         }
     }
-
 
     private class RegisterBtnListener implements View.OnClickListener {
 
@@ -351,4 +360,41 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
     }
+
+    public class MyPushListener implements PushListener {
+
+        @Override
+        public void onPushNotificationReceived(Activity activity, PushNotification pushNotification) {
+
+        /* The following notification properties are available. */
+            String title = pushNotification.getTitle();
+            String message = pushNotification.getMessage();
+            Map<String, String> customData = pushNotification.getCustomData();
+
+        /*
+         * Message and title cannot be read from a background notification object.
+         * Message being a mandatory field, you can use that to check foreground vs background.
+         */
+            if (message != null) {
+
+            /* Display an alert for foreground push. */
+                AlertDialog.Builder dialog = new AlertDialog.Builder(activity);
+                if (title != null) {
+                    dialog.setTitle(title);
+                }
+                dialog.setMessage(message);
+                if (!customData.isEmpty()) {
+                    dialog.setMessage(message + "\n" + customData);
+                }
+                dialog.setPositiveButton(android.R.string.ok, null);
+                dialog.show();
+            } else {
+
+            /* Display a toast when a background push is clicked. */
+                Toast.makeText(activity, "Welcome to DevOps Fair!", Toast.LENGTH_LONG).show(); // For example R.string.push_toast would be "Push clicked with data=%1s"
+            }
+        }
+    }
+
+
 }
