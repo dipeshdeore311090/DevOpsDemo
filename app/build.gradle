@@ -32,6 +32,7 @@ dependencies {
     compile "com.microsoft.appcenter:appcenter-analytics:1.2.0"
     compile "com.microsoft.appcenter:appcenter-crashes:1.2.0"
     compile "com.microsoft.appcenter:appcenter-push:1.2.0"
+    compile 'com.github.OpenCraft:AnimatedExpandableEditText:-SNAPSHOT'
 }
 
 apply plugin: 'com.google.gms.google-services'

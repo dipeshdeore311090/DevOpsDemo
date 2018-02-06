@@ -86,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
         Push.setSenderId("1012619576677");
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf-9257b6d056ce", Analytics.class, Crashes.class);
         AppCenter.start(getApplication(), "d10e78b3-7fe3-44c6-b4bf- 9257b6d056ce", Push.class);
+        Analytics.trackEvent("DevOps Demo app launched from " + Build.MODEL);
 
         sharedPref = getApplicationContext().getSharedPreferences("Hackathon",Context.MODE_PRIVATE);
 
@@ -94,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
             finish();
+
         } else {
 
             imgProfilePic = findViewById(R.id.img_profile_pic);
@@ -123,6 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             String token = FirebaseInstanceId.getInstance().getToken();
             Log.d(TAG, "Register Token: " + token);
+            Analytics.trackEvent("Device token:  " + token);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(AppConstants.DeviceToken, token);
             editor.commit();

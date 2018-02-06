@@ -93,7 +93,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("PollChimp")
+                        .setContentTitle("DevOps Demo")
                         .setContentText(contentText)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)
