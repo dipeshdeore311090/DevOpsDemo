@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:textColor="@color/colorBrown"
+        android:textColor="@color/colorPrimaryDark"
         android:textStyle="bold"/>
 
     <ImageView
